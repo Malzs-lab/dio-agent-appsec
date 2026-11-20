@@ -1,4 +1,4 @@
-# 🛡️ DIO Agent: Especialização em AppSec & Análise Defensiva de Vulnerabilidades
+#  DIO Agent: Especialização em AppSec & Análise Defensiva de Vulnerabilidades
 
 ![Status](https://img.shields.io/badge/Status-Concluído%20%26%20Validado-brightgreen)
 ![Harness](https://img.shields.io/badge/Harness-Nous%20Hermes%20%7C%20Antigravity-blue)
@@ -12,7 +12,7 @@ Nenhum modelo de IA foi retreinado ou teve pesos modificados: todo o aprendizado
 
 ---
 
-## 🎯 Por Que Esta Especialização Foi Criada?
+##  Por Que Esta Especialização Foi Criada?
 
 Assistentes de IA tradicionais e genéricos costumam falhar gravemente em tarefas de segurança por dois motivos:
 1. **Respostas cegas e imediatas:** Entregam scripts ou comandos destrutivos sem questionar o contexto do ambiente (o que pode travar portas de rede e derrubar servidores em produção).
@@ -26,7 +26,7 @@ Esta especialização transforma o DIO Agent em um **Consultor e Mentor Sênior 
 
 ---
 
-## 🏗️ Arquitetura do Repositório e Arquivos do Projeto
+##  Arquitetura do Repositório e Arquivos do Projeto
 
 ```text
 dio-agent-appsec/
@@ -42,11 +42,11 @@ dio-agent-appsec/
 │       └── dio.md                      # Cultura pedagógica e histórico da DIO
 │
 ├── skills/                             # Habilidades modulares acionadas por demanda (Progressive Disclosure)
-│   ├── vulnerability-analysis/         # ⭐ SKILL PRINCIPAL: Análise defensiva e triagem de vulnerabilidades
+│   ├── vulnerability-analysis/         #  SKILL PRINCIPAL: Análise defensiva e triagem de vulnerabilidades
 │   │   ├── SKILL.md                    # Roteiro formal em 6 fases com YAML frontmatter
 │   │   └── README.md                   # Explicação da skill para desenvolvedores
 │   │
-│   ├── security-test-guide/            # 🚀 MELHORIA DE EVOLUÇÃO: Criação de testes automatizados e SAST
+│   ├── security-test-guide/            #  MELHORIA DE EVOLUÇÃO: Criação de testes automatizados e SAST
 │   │   ├── SKILL.md                    # Roteiro para testes unitários com injeção e linters
 │   │   └── README.md                   # Explicação para humanos
 │   │
@@ -68,7 +68,7 @@ dio-agent-appsec/
 
 ---
 
-## ⚡ Como Rodar o Agente no Harness (Hermes / VS Code)
+##  Como Rodar o Agente no Harness (Hermes / VS Code. No meu projeto utilizei o Antigravity mas pelo VS ou Hermes não muda nada)
 
 O agente foi desenhado para rodar em harnesses modernos compatíveis com o padrão aberto `AGENTS.md`. Abaixo está o fluxo com o **Hermes**, como ensinado pela Expert Isadora:
 
@@ -105,7 +105,7 @@ hermes
 ### 1. Código Vulnerável (`lab-security/app_vulneravel.py`)
 Implementa uma tela de login onde o SQL é concatenado via f-string:
 ```python
-# ❌ VULNERABILIDADE CRÍTICA (CWE-89): Concatenação de entrada externa
+#  VULNERABILIDADE CRÍTICA (CWE-89): Concatenação de entrada externa
 query_insegura = f"SELECT id, username, role FROM users WHERE username = '{usuario_input}' AND password = '{senha_input}'"
 cursor.execute(query_insegura)
 ```
@@ -114,7 +114,7 @@ cursor.execute(query_insegura)
 ### 2. Código Corrigido e Protegido (`lab-security/app_seguro.py`)
 Implementa as recomendações da skill `vulnerability-analysis`:
 ```python
-# ✅ PROTEÇÃO COMPROVADA: Consulta Parametrizada (Prepared Statement)
+#  PROTEÇÃO COMPROVADA: Consulta Parametrizada (Prepared Statement)
 query_parametrizada = "SELECT id, username, password_hash, salt, role FROM users WHERE username = ?"
 cursor.execute(query_parametrizada, (usuario_input,))
 ```
@@ -139,7 +139,7 @@ Ran 6 tests in 0.052s - OK
 
 ---
 
-## 📸 Evidências de Interação com o Agente (Prints / Transcrições)
+##  Evidências de Interação com o Agente (Prints / Transcrições)
 
 ### Teste 1: Análise do `app.py` Vulnerável
 ```text
@@ -157,7 +157,7 @@ Antes de propor a refatoração, me responda:
 --- DIAGNÓSTICO DE RISCO ---
 * Impacto: 5/5 (Acesso total administrativo e vazamento de base)
 * Probabilidade: 5/5 (Trivialmente explorável via internet)
-* Severidade: 🔴 CRÍTICA (Score 25)
+* Severidade:  CRÍTICA (Score 25)
 * Mapeamento: CWE-89 | OWASP A03:2021 (Injection) | MITRE ATT&CK T1190
 * Tríade CIA: Viola Confidencialidade e Integridade
 
@@ -187,7 +187,7 @@ Por favor, me responda 4 perguntas sobre o seu ambiente:
 
 ---
 
-## 🌟 Melhorias de Evolução Implementadas
+## Melhorias de Evolução Implementadas
 
 Como proposto no desafio, além da base original da Expert Isadora, incorporamos:
 1. **Skill de Testes Automatizados (`security-test-guide`):** Roteiro formal para guiar desenvolvedores na criação de suites unitárias negativas de injeção e integração de linters SAST (`bandit`, `pip-audit`).
@@ -197,21 +197,8 @@ Como proposto no desafio, além da base original da Expert Isadora, incorporamos
 
 ---
 
-## ✅ Checklist de Submissão
-
-- [x] Skill nova `vulnerability-analysis` com `SKILL.md` contendo `name` e `description` válidos.
-- [x] Skill nova documentada em `README.md` explicativo para humanos.
-- [x] Skill listada e mapeada na tabela central do `AGENTS.md`.
-- [x] Base de conhecimento `agent/knowledge/security-basics.md` abordando vulnerabilidade, ameaça, risco e Tríade CIA.
-- [x] Persona atualizada em `agent/persona.md` instruindo a postura inquisitiva e socrática.
-- [x] Testes e cenários executados exclusivamente em ambiente isolado de laboratório.
-- [x] Todas as pastas e arquivos citados na documentação existem e possuem conteúdo detalhado.
-- [x] Repositório público no GitHub com nome padronizado em minúsculas e sem acentos: `dio-agent-appsec`.
-
----
-
-## 👨‍💻 Autor & Agradecimentos
-* **Autor:** MALZS
+##  Autor & Agradecimentos
+* **Autor:** MALZS e GEMINI Flash 3.8
 * **Bootcamp:** Cibersegurança & AI Agent Builders — Digital Innovation One (DIO)
 * **Mentoria:** Expert Isadora Ferrão
 * **Licença:** MIT
